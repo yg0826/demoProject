@@ -29,9 +29,4 @@ public class demoController {
     public String loginForm(){
         return "login.html";
     }
-
-    @PostMapping("/main")
-    public void main(){
-    }
-
 }
