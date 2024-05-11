@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <title>Movie Project</title>
 </head>
+<style>
+    body{
+        text-align:center
+    }
+    table{
+     border-collapse:collapse;
+    }
+</style>
 <body>
-<img width="300" src="https://m.media-amazon.com/images/M/MV5BMTc1ODM5YjQtMmQzNS00Y2FkLWJhNTgtYTE5ZDY0NjQyNmRjXkEyXkFqcGdeQXVyMTY3ODE5NTY1._V1_FMjpg_UX1000_.jpg"><br>
-<span><b>Title: May December<b/></span>
-<h3>May December is a 2023 American drama film directed by Todd Haynes from a screenplay by Samy Burch, based on a story by Burch and Alex Mechanik.</h3>
+<img src="https://image.dongascience.com/Photo/2017/09/15054595690328.jpg" width="300">
+<h1><b>박스오피스 TOP10</b></h1>
+<table border="1" style="margin-left:auto;margin-right:auto;">
+    <tr>
+        <th>Rank</th>
+        <th>Title</th>
+        <th>Audience Accumulated</th>
+    </tr>
+    <tr th:each="movieDto : ${result}">
+        <td th:text="${movieDto.rank}"></td>
+        <td th:text="${movieDto.title}"></td>
+        <td th:text="${movieDto.audiAcc}"></td>
+    </tr>
+</table>
 </body>
 </html>
