@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Project</title>
+</head>
+<style>
+    body{
+        text-align:center
+    }
+    #loginBtn{
+        background-color:white;
+    }
+    #loginBtn:active{
+        background-color:skyblue;
+    }
+    #signupBtn{
+        background-color:white;
+        border: none;
+    }
+    #signupBtn:active{
+        background-color:skyblue;
+        border: none;
+        font-size: 1.2rem;
+    }
+</style>
+<body>
+<h1><b>LOGIN</b></h1>
+<form method="post" action="/main" >
+<input name="id" type="text" placeholder="아이디"><br>
+<input name="pw" type="password" placeholder="비밀번호"><br><br>
+    <button id="loginBtn">로그인</button><br><br>
+</form>
+<button id="signupBtn" onclick="location.href='/signup'">회원가입</button>
+</body>
+</html>
