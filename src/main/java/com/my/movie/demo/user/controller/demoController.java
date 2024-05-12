@@ -29,4 +29,14 @@ public class demoController {
     public String loginForm(){
         return "login.html";
     }
+
+    @GetMapping("/main")
+    public void main(){
+
+    }
+
+    @GetMapping("/movie/chart")
+    public String chartForm(){
+        return "chart.html";
+    }
 }

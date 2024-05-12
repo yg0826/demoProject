@@ -13,7 +13,6 @@ public class OpenApiManager {
 
     public String makeUrl() throws UnsupportedEncodingException {
         SimpleDateFormat dtFormat = new SimpleDateFormat("yyyyMMdd");
-        //+dtFormat.format(new Date())
-        return BASE_URL + serviceKey +"&targetDt=20240511";
+        return BASE_URL + serviceKey +"&targetDt="+dtFormat.format(new Date());
     }
 }

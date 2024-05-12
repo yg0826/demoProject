@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        text-align:center
+    }
+    table{
+     border-collapse:collapse;
+    }
+</style>
+<body>
+<div th:replace="/header::header"></div>
+<h1><b>박스오피스 TOP10</b></h1>
+<table border="1" style="margin-left:auto;margin-right:auto;">
+    <tr>
+        <th>Rank</th>
+        <th>Title</th>
+        <th>Audience Accumulated</th>
+    </tr>
+    <tr th:each="movieDto : ${result}">
+        <td th:text="${movieDto.rank}"></td>
+        <td th:text="${movieDto.title}"></td>
+        <td th:text="${movieDto.audiAcc}"></td>
+    </tr>
+</table>
+<div th:replace="/footer::footer"></div>
+</body>
+</html>
