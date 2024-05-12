@@ -32,11 +32,18 @@ public class demoController {
 
     @GetMapping("/main")
     public void main(){
-
     }
-
+    @GetMapping("/mypage")
+    public String myPageForm(){
+        return "mypage.html";
+    }
     @GetMapping("/movie/chart")
     public String chartForm(){
         return "chart.html";
     }
+    @GetMapping("/movie/list")
+    public String listForm(){
+        return "list.html";
+    }
+
 }
