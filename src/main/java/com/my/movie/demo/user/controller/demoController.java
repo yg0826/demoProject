@@ -29,6 +29,11 @@ public class demoController {
         return"login.html";
     }
 
+    @PostMapping("/login")
+    public String loginEnd(){
+        return "mypage.html";
+    }
+
     @GetMapping("/mypage")
     public String myPageForm(){
         return "mypage.html";

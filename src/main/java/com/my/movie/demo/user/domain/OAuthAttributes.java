@@ -21,7 +21,21 @@ public class OAuthAttributes {
     private Role role;
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes){
-        return ofNaver("email", attributes);
+        if(registrationId.equals("naver")){
+          return ofNaver("email", attributes);
+        }else if(registrationId.equals("google")){
+            return ofGoogle(userNameAttributeName, attributes);
+        }else return null;
+    }
+
+    private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes){
+        return OAuthAttributes.builder()
+                .username((String) attributes.get("username"))
+                .email((String) attributes.get("email"))
+                .nickname((String) attributes.get("nickname"))
+                .attributes(attributes)
+                .nameAttributeKey(userNameAttributeName)
+                .build();
     }
 
     private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes){

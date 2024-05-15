@@ -23,17 +23,18 @@
         border: none;
         font-size: 1.2rem;
     }
-    #title{
-        color:skyblue;
-        font-family:Courier New;
-        font-style:italic;
-    }
 </style>
 <body>
 <img src="https://image.cine21.com/resize/cine21/movie/2023/0328/10_39_29__6422455157da0[W578-].jpg" width="500"><br>
-<b id="title">언젠가 세상은 영화가 될 것이다</b>
 <h1><b>LOGIN</b></h1>
-<p><a href="/oauth2/authorization/naver">네이버로그인</a></p><br>
+<form method="post" action="/login">
+    <label>ID </label><input name="id" type="text">
+    <label>PW </label><input name="pw" type="password"><br><br>
+    <button>로그인</button>&nbsp;&nbsp;
+    <a href="/oauth2/authorization/naver">네이버로그인</a>&nbsp;
+    <a href="/oauth2/authorization/google">구글 로그인</a><br>
+</form><br>
 <button id="signupBtn" onclick="location.href='/signup'">회원가입</button>
+<div th:replace="/footer::footer"></div>
 </body>
 </html>
