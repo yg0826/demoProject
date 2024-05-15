@@ -5,12 +5,22 @@ import com.my.movie.demo.user.dto.UserDTO;
 import com.my.movie.demo.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl {
 
     private final UserRepository userRepository;
+
+    @Transactional
+    public void userLogin(UserDTO userDto){
+        if(userDto.getPassword()!=null){
+            login(userDto);
+        }else{
+            naverLogin(userDto);
+        }
+    }
 
     public void signup(UserDTO userDto){
         //유효성 검사
@@ -30,5 +40,17 @@ public class UserServiceImpl {
         User user=User.builder()
                         .email(email).username(username).password(password).build();
         userRepository.save(user);
+    }
+
+    public void login(UserDTO userDto){
+
+    }
+
+    public void naverLogin(UserDTO userDto){
+        Boolean isExists=userRepository.existsByEmail(userDto.getEmail());
+        if(isExists){
+            return;
+        }
+
     }
 }

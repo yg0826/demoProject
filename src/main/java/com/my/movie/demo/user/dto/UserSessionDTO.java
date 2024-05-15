@@ -3,13 +3,16 @@ package com.my.movie.demo.user.dto;
 import com.my.movie.demo.user.domain.Role;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
 
 @Data
-public class UserDTO {
+@RequiredArgsConstructor
+@AllArgsConstructor
+public class UserSessionDTO {
     private String email;
     private String username;
     private String nickname;

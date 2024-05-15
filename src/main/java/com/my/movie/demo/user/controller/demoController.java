@@ -13,7 +13,6 @@ public class demoController {
 
     private final UserServiceImpl userService;
 
-
     @GetMapping("/signup")
     public String signupForm(){
         return "signup.html";
@@ -26,21 +25,15 @@ public class demoController {
     }
 
     @GetMapping("/login")
-    public String loginForm(){
-        return "login.html";
+    public String login(){
+        return"login.html";
     }
 
-    @GetMapping("/main")
-    public void main(){
-    }
     @GetMapping("/mypage")
     public String myPageForm(){
         return "mypage.html";
     }
-    @GetMapping("/movie/chart")
-    public String chartForm(){
-        return "chart.html";
-    }
+
     @GetMapping("/movie/list")
     public String listForm(){
         return "list.html";

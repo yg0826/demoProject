@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-//https://velog.io/@sujin1018/%EC%8A%A4%ED%94%84%EB%A7%81-json-%ED%8C%8C%EC%8B%B1%ED%95%98%EA%B8%B0
 
 @Controller
 @RequiredArgsConstructor
@@ -23,7 +23,7 @@ public class openApiController {
 
     private final OpenApiManager openApiManager;
 
-    @GetMapping("/open-api")
+    @GetMapping("/movie/chart")
     public String fetch(Model model) throws IOException {
         String result="";
         List<MovieDTO> movieList=new ArrayList<>();
@@ -53,7 +53,9 @@ public class openApiController {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
+        Date today=new Date();
         model.addAttribute("result",movieList);
-        return "main.html";
+        model.addAttribute("today",today.toString());
+        return "chart.html";
     }
 }
