@@ -43,5 +43,4 @@ public class demoController {
     public String listForm(){
         return "list.html";
     }
-
 }

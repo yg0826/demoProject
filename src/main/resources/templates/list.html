@@ -13,6 +13,27 @@
 <div th:replace="/header::header"></div>
 <img src="https://image.dongascience.com/Photo/2017/09/15054595690328.jpg" width="300"><br>
 <p>영화리스트</p>
+<form action="/movie/list/search" method="get">
+    <select name="group">
+        <option value="directorNm">감독명</option>
+        <option value="movieNm">영화제목</option>
+    </select>
+<input type="text" name="input"><button type="submit">검색</button>
+</form><br>
+<table border="1" style="margin-left:auto;margin-right:auto;">
+    <tr>
+        <th>movieNm</th>
+        <th>prdtYear</th>
+        <th>openDt</th>
+        <th>directors</th>
+    </tr>
+    <tr th:each="dbDto : ${result}">
+        <td th:text="${dbDto.movieNm}"></td>
+        <td th:text="${dbDto.prdtYear}"></td>
+        <td th:text="${dbDto.openDt}"></td>
+        <td th:text="${dbDto.directors}"></td>
+    </tr>
+</table>
 <div th:replace="/footer::footer"></div>
 </body>
 </html>
