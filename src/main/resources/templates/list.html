@@ -19,16 +19,19 @@
         <option value="movieNm">영화제목</option>
     </select>
 <input type="text" name="input"><button type="submit">검색</button>
-</form><br>
+<input type="number" name="page" style="width:40px;">페이지
+</form>
 <table border="1" style="margin-left:auto;margin-right:auto;">
     <tr>
         <th>movieNm</th>
+        <th>movieCd</th>
         <th>prdtYear</th>
         <th>openDt</th>
         <th>directors</th>
     </tr>
     <tr th:each="dbDto : ${result}">
         <td th:text="${dbDto.movieNm}"></td>
+        <td th:text="${dbDto.movieCd}"></td>
         <td th:text="${dbDto.prdtYear}"></td>
         <td th:text="${dbDto.openDt}"></td>
         <td th:text="${dbDto.directors}"></td>

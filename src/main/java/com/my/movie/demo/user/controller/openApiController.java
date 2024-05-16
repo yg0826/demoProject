@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,25 +30,17 @@ public class openApiController {
     private final OpenApiManager openApiManager;
 
     @GetMapping("/movie/list/search")
-    public String search(@RequestParam("group") String group, @RequestParam("input") String input, Model model){
-        String result="";
-        List<MovieDBDTO> movieList=new ArrayList<>();
-        try {
-            String urlStr = openApiManager.makeUrl2(group,input);
-            URL url = new URL(urlStr);
-            BufferedReader br;
-            br = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
-            result = br.readLine();
-
-            JSONParser jsonParser=new JSONParser();
-            JSONObject jsonObject=(JSONObject) jsonParser.parse(result);
-
-            JSONObject movieListResult=(JSONObject) jsonObject.get("movieListResult");
-            JSONArray movieArr=(JSONArray)movieListResult.get("movieList");
+    public String search(@RequestParam("group") String group,
+                         @RequestParam("input") String input,
+                         @RequestParam(name="page", defaultValue = "1") int page,
+                         Model model) throws IOException, ParseException {
+            List<MovieDBDTO> movieList=new ArrayList<>();
+           JSONArray movieArr=openApiManager.makeUrl2(group, input, page);
 
             for(int i=0;i<movieArr.size();i++){
-                jsonObject=(JSONObject) movieArr.get(i);
+                JSONObject jsonObject=(JSONObject) movieArr.get(i);
                 String movieNm= jsonObject.get("movieNm").toString();
+                String movieCd= jsonObject.get("movieCd").toString();
                 String openDt=jsonObject.get("openDt").toString();
                 String prdtYear=jsonObject.get("prdtYear").toString();
                 JSONArray directors=(JSONArray)jsonObject.get("directors");
@@ -57,16 +50,12 @@ public class openApiController {
                     dbDto.setDirectors(director.get("peopleNm").toString());
                 }
                 dbDto.setMovieNm(movieNm);
+                dbDto.setMovieCd(movieCd);
                 dbDto.setPrdtYear(prdtYear);
                 dbDto.setOpenDt(openDt);
                 movieList.add(dbDto);
             }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-        Date today=new Date();
         model.addAttribute("result",movieList);
-        model.addAttribute("today",today.toString());
         return "list.html";
     }
 
