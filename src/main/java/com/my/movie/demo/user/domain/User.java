@@ -3,7 +3,6 @@ package com.my.movie.demo.user.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
 
 @Getter
 @Setter
@@ -15,6 +14,8 @@ import java.util.Date;
 public class User extends  TimeEntity{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long uNum;
     private String email;
     private String username;
     private String nickname;

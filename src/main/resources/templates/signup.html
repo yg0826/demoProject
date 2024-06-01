@@ -27,13 +27,12 @@
 </style>
 <body>
 <h1>WELCOME!</h1>
-<form method="post" action="/signup">
+<form method="post" action="/join">
     <input name="email" type="text" placeholder="이메일"><br>
     <input name="username" type="text" placeholder="아이디"><br>
+    <input name="nickname" type="text" placeholder="닉네임"><br>
     <input name="password" type="password" placeholder="비밀번호"><br><br>
-    <button id="signupBtn">회원가입</button><br><br>
-    <button id="loginBtn">로그인</button><br>
+    <button type="submit" id="signupBtn">회원가입</button><br><br>
 </form>
-<div th:replace="/footer::footer"></div>
 </body>
 </html>

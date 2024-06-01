@@ -7,4 +7,5 @@ public class MovieDTO {
     private String rank;
     private String title;
     private String audiAcc;
+    private String movieCode;
 }

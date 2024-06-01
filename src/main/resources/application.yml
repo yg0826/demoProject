@@ -11,7 +11,14 @@ spring:
     url: jdbc:mysql://localhost:3306/movie_manager?serverTimezone=Asia/Seoul
     username: root
     password: 1234
-
+--- #테이블 자동 생성
+#spring:
+#  jpa:
+#    open-in-view: true
+#    hibernate:
+#      ddl-auto: create
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 --- #Naver OAuth 설정
 spring:
   security:
